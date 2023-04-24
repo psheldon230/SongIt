@@ -1,5 +1,6 @@
-from song import SONG
+from  song import SONG
 import pandas as pd
+import pickle as pkl
 songsStrings = [
     """Bring Me The Horizon - Can You Feel My Heart
 128
@@ -2733,6 +2734,8 @@ songs = []
 for songString in songsStrings:
     songs.append(SONG(songString))
 
+pkl.dump(songs, open('NicksWork/songsPickle.pkl', 'wb'))
+
 songNames = []
 bmps = []
 keys = []
@@ -2761,6 +2764,6 @@ for song in songs:
 
 df = pd.DataFrame(list(zip(songNames, bmps, keys, predominantVoiceGenders,
                   genreTags, moodTags, characterTags, energyLevels)))
-gfg_csv_data = df.to_csv('NicksSongStringProcessor/songData.csv', index=False)
+gfg_csv_data = df.to_csv('NicksWork/songData.csv', index=False)
 
 nick = 5
