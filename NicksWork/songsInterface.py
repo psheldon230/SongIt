@@ -20,7 +20,7 @@ class SONGSINTERFACE:
         self.allSongs = allSongs
 
     def choseSongs(self, numSongs=50):
-        self.selectedSongs = random.sample(set(self.allSongs), numSongs)
+        self.selectedSongs = random.sample(list(set(self.allSongs)), numSongs)
 
     def printSongUI(self):
         for i, curSong in enumerate(self.selectedSongs):
