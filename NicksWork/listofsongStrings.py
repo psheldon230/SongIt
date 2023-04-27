@@ -1,6 +1,7 @@
-from  song import SONG
+from song import SONG
 import pandas as pd
 import pickle as pkl
+import json
 songsStrings = [
     """Bring Me The Horizon - Can You Feel My Heart
 128
@@ -1595,8 +1596,8 @@ early / mid 2000s
 3nqQXoyQOWXiESFLlDF1hG
 Listen on Spotify
 |
-Similarity""", 
-"""Shakira x Wyclef Jean - Hips Don't Lie (feat. Wyclef Jean)
+Similarity""",
+    """Shakira x Wyclef Jean - Hips Don't Lie (feat. Wyclef Jean)
 100
 Bb minor
 Male
@@ -1630,7 +1631,7 @@ Listen on Spotify
 |
 Similarity
 """,
-"""Adele - Hello
+    """Adele - Hello
 79
 Ab major
 None
@@ -1663,7 +1664,7 @@ contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Bad Bunny - Tití Me Preguntó
+    """Bad Bunny - Tití Me Preguntó
 111
 F minor
 Male
@@ -1696,7 +1697,7 @@ contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Coldplay - Paradise
+    """Coldplay - Paradise
 140
 F major
 Male
@@ -1730,7 +1731,7 @@ Listen on Spotify
 |
 Similarity
 """,
-"""Marshmello x Khalid - Silence
+    """Marshmello x Khalid - Silence
 142
 E major
 Male
@@ -1763,7 +1764,7 @@ contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Atomique x P.tah x Der-Con - Karma (Radio Edit)
+    """Atomique x P.tah x Der-Con - Karma (Radio Edit)
 140
 F# minor
 Male
@@ -1796,7 +1797,7 @@ contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Måneskin - THE LONELIEST
+    """Måneskin - THE LONELIEST
 130
 B minor
 Male
@@ -1829,7 +1830,7 @@ contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Ed Sheeran - Photograph
+    """Ed Sheeran - Photograph
 108
 E major
 Male
@@ -1862,7 +1863,7 @@ late 2000s / contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Imagine Dragons - Zero - From the Original Motion Picture "Ralph Breaks The Internet"
+    """Imagine Dragons - Zero - From the Original Motion Picture "Ralph Breaks The Internet"
 90
 F# major
 Male
@@ -1895,7 +1896,7 @@ mid / late 2000s
 Listen on Spotify
 |
 Similarity""",
-"""Blonde Diamond - Dreamland
+    """Blonde Diamond - Dreamland
 180
 D# minor
 Female
@@ -1929,7 +1930,7 @@ Listen on Spotify
 |
 Similarity""",
 
-"""D.Milez - Supereroi
+    """D.Milez - Supereroi
 90
 Bb minor
 Male
@@ -1962,7 +1963,7 @@ late 2000s / contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Capital Soiree - Oxygen!
+    """Capital Soiree - Oxygen!
 178
 B minor
 Male
@@ -1995,7 +1996,7 @@ contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Rednex - Cotton Eye Joe
+    """Rednex - Cotton Eye Joe
 132
 A major
 Male
@@ -2030,7 +2031,7 @@ Listen on Spotify
 Similarity
 
 """,
-"""Nic D - Cotton Candy
+    """Nic D - Cotton Candy
 104
 Eb major
 Male
@@ -2063,7 +2064,7 @@ contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Nic D - Skin like summer
+    """Nic D - Skin like summer
 180
 F major
 Male
@@ -2096,7 +2097,7 @@ contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Julia Michaels - Heaven
+    """Julia Michaels - Heaven
 200
 Bb major
 Female
@@ -2129,7 +2130,7 @@ contemporary
 Listen on Spotify
 |
 Similarity""",
-"""JVKE - golden hour
+    """JVKE - golden hour
 94
 E major
 None
@@ -2162,7 +2163,7 @@ late 2000s / contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Coldplay - Viva La Vida
+    """Coldplay - Viva La Vida
 138
 Ab major
 Male
@@ -2195,7 +2196,7 @@ mid / late 2000s
 Listen on Spotify
 |
 Similarity""",
-"""Coldplay - A Sky Full of Stars
+    """Coldplay - A Sky Full of Stars
 125
 F# major
 None
@@ -2229,7 +2230,7 @@ Listen on Spotify
 |
 Similarity
 """,
-"""Oliver Tree x Robin Schulz - Miss You
+    """Oliver Tree x Robin Schulz - Miss You
 145
 F# minor
 Female
@@ -2263,7 +2264,7 @@ Listen on Spotify
 |
 Similarity
 """,
-"""Tiësto - Lay Low
+    """Tiësto - Lay Low
 122
 C# minor
 Female
@@ -2296,7 +2297,7 @@ contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Yves V x Ilkay Sencan x Emie - Not So Bad (feat. Emie)
+    """Yves V x Ilkay Sencan x Emie - Not So Bad (feat. Emie)
 126
 G# minor
 Female
@@ -2329,7 +2330,7 @@ contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Ed Sheeran - Celestial
+    """Ed Sheeran - Celestial
 123
 D major
 Male
@@ -2362,7 +2363,7 @@ late 2000s / contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Tiësto x Tate McRae - 10:35
+    """Tiësto x Tate McRae - 10:35
 120
 Bb minor
 Female
@@ -2394,8 +2395,8 @@ contemporary
 6BePGk3eCan4FqaW2X8Qy3
 Listen on Spotify
 |
-Similarity""", 
-"""Meghan Trainor - Made You Look
+Similarity""",
+    """Meghan Trainor - Made You Look
 145
 Bb major
 Female
@@ -2429,7 +2430,7 @@ Listen on Spotify
 |
 Similarity
 """,
-"""Adele - Remedy
+    """Adele - Remedy
 81
 D major
 Male
@@ -2462,7 +2463,7 @@ contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Pitbull - Hotel Room Service
+    """Pitbull - Hotel Room Service
 126
 F minor
 Male
@@ -2496,7 +2497,7 @@ Listen on Spotify
 |
 Similarity
 """,
-"""Nic D - upsides
+    """Nic D - upsides
 85
 Db major
 Male
@@ -2529,7 +2530,7 @@ contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Mark Ronson x Bruno Mars - Uptown Funk (feat. Bruno Mars)
+    """Mark Ronson x Bruno Mars - Uptown Funk (feat. Bruno Mars)
 115
 D minor
 Male
@@ -2562,7 +2563,7 @@ early / mid 1990s
 Listen on Spotify
 |
 Similarity""",
-"""Cardi B - Up
+    """Cardi B - Up
 83
 B minor
 Female
@@ -2595,7 +2596,7 @@ late 2000s / contemporary
 Listen on Spotify
 |
 Similarity""",
-"""Pitbull - I Know You Want Me (Calle Ocho)
+    """Pitbull - I Know You Want Me (Calle Ocho)
 127
 D minor
 Male
@@ -2628,7 +2629,7 @@ contemporary
 Listen on Spotify
 |
 Similarity""",
-"""The Kid LAROI x Justin Bieber - STAY (with Justin Bieber)
+    """The Kid LAROI x Justin Bieber - STAY (with Justin Bieber)
 170
 Db major
 Male
@@ -2662,7 +2663,7 @@ Listen on Spotify
 |
 Similarity
 """,
-"""Travis Scott - HIGHEST IN THE ROOM
+    """Travis Scott - HIGHEST IN THE ROOM
 77
 D minor
 Male
@@ -2696,7 +2697,7 @@ Listen on Spotify
 |
 Similarity
 """,
-"""Pharrell Williams - Happy - From "Despicable Me 2"
+    """Pharrell Williams - Happy - From "Despicable Me 2"
 80
 F minor
 Female
@@ -2731,10 +2732,16 @@ Listen on Spotify
 Similarity"""]
 
 songs = []
+songsDict = []
 for songString in songsStrings:
-    songs.append(SONG(songString))
+    curSong = SONG(songString)
+    songs.append(curSong)
+    songsDict.append(curSong.__dict__)
 
+jsonSongsDict = {"songs": songsDict}
+jsonSongsJson = json.dumps(jsonSongsDict)
 pkl.dump(songs, open('NicksWork/songsPickle.pkl', 'wb'))
+pkl.dump(songsDict, open('NicksWork/songsDictPickle.pkl', 'wb'))
 
 songNames = []
 bmps = []
@@ -2754,7 +2761,6 @@ for song in songs:
     characterTags.append(song.characterTags)
     energyLevel = song.energyLevel
     energyLevel = energyLevel.strip()
-    print(energyLevel)
     if energyLevel == 'High':
         energyLevels.append(3)
     if energyLevel == 'Medium':
