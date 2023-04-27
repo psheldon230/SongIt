@@ -1,4 +1,6 @@
 import random
+import os
+import openai
 random.seed(1)
 
 
@@ -9,9 +11,27 @@ class SONGSINTERFACE:
         self.numSongs = numSongs
         self.lastSelectedSongs = None
         self.allSongsDict = None
+        self.lastPrompt = None
         if not initualSongs is None:
             self.setupSongs(initualSongs, self.numSongs)
         return
+
+    def returnGBTResponce(self, maxTokens=50):
+        openai.api_key = "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"
+        # completion = openai.Completion.create(
+        #     engine="text-davinci-002",
+        #     prompt=self.lastPrompt,
+        #     max_tokens=maxTokens,)
+        # print(maxTokens)
+        # return completion.choices[0].text
+
+        completion = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": self.lastPrompt}
+            ]
+        )
+        return completion.choices[0].message.content
 
     def setupSongs(self, allSongs, numSongs=10):
         self.addAllSongs(allSongs)
@@ -33,20 +53,21 @@ class SONGSINTERFACE:
         self.lastSelectedSongs = curSongs
 
     def returnPromptWithList(self, songList):
-        print("songlist" ,songList)
+        print("songlist", songList)
         self.selectLastSelectedSongsFromList(songList)
         return self.returnPrompt()
 
     def returnPrompt(self):
         result = ""
-        result +="\n\n\n"
+        result += "\n\n\n"
         result += "\nPlease write a song that takes influence from the following songs with these details about the songs. Give me the lyrics, cords, bpm, key and instroments that the song should be preformed with"
         for song in self.lastSelectedSongs:
-            result += "\n"+song.songName + " by" + song.artist + " with bpm " + str(song.bpm) + " with key " + song.key + " with predominant voice gender " + song.predominantVoiceGender + " with genre " + song.genreTags[0] + " with energy level " + song.energyLevel + " with meter " + song.meter + " with mood " + song.moodAdvancedTags[0]
+            result += "\n"+song.songName + " by" + song.artist + " with bpm " + str(song.bpm) + " with key " + song.key + " with predominant voice gender " + song.predominantVoiceGender + \
+                " with genre " + song.genreTags[0] + " with energy level " + song.energyLevel + \
+                " with meter " + song.meter + \
+                " with mood " + song.moodAdvancedTags[0]
+        self.lastPrompt = result
         return result
-
-
-
 
     def choseSongs(self, numSongs=50):
         self.selectedSongs = random.sample(list(set(self.allSongs)), numSongs)
@@ -75,7 +96,7 @@ class SONGSINTERFACE:
 
         self.lastSelectedSongs = selectedSongs
 
-    def printPrompt(self, selectedSongs = None):
+    def printPrompt(self, selectedSongs=None):
 
         print("\n\n\n")
         print("Please write a song that takes influence from the following songs with these details about the songs. Give me the lyrics, cords, bpm, key and instroments that the song should be preformed with")

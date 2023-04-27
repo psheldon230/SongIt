@@ -7,6 +7,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+    <style>
+      .promptText {
+        white-space: pre-wrap;
+      }
+    </style>
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
           const sel = document.getElementById("selectSongs");
@@ -45,6 +50,6 @@
     <select id="selectSongs" multiple="multiple"></select>
     <button type="button" id="returnDataPython">Click Me!</button>
     <h3>Prompt Below</h3>
-    <p id="promptText">Returned Prompt</p>
+    <pre id="promptText">Returned Prompt</pre>
   </body>
 </html>

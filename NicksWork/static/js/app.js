@@ -9,9 +9,20 @@ $(document).ready(function () {
       }
     }
     console.log(selectedValues);
-    sendDataToServer(selectedValues);
+    var responce = sendDataToServer(selectedValues);
+    console.log("nick" + responce);
   });
 });
+function formatTextForHTML(text) {
+  // Replace newline characters with HTML line breaks
+  // const formattedText = text.replace(/\n/g, "<br>");
+  // const formattedText = text
+  var formattedText = text
+  return formattedText
+
+  // Replace consecutive whitespace characters with non-breaking spaces
+  return formattedText.replace(/[\s]+/g, "&nbsp;");
+}
 
 function sendDataToServer(data) {
   $.ajax({
@@ -21,8 +32,9 @@ function sendDataToServer(data) {
     contentType: "application/json",
     success: function (response) {
       console.log("Data sent successfully");
+      console.log(response.message)
+
       $("#promptText").text(response.message);
-      console.log(response);
     },
     error: function (jqXHR, textStatus, errorThrown) {
       console.log("Error sending data");

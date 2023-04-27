@@ -11,15 +11,15 @@ def home():
     songs = pkl.load(open("NicksWork/songsDictDictPickle.pkl", 'rb'))
     return render_template("home.html", songs=songs)
 
+
 @app.route('/process-data', methods=['POST'])
 def process_data():
     data = request.get_json()
     songs = pkl.load(open("NicksWork/songsPickle.pkl", 'rb'))
     SI = SONGSINTERFACE(songs)
     curPrompt = SI.returnPromptWithList(songList=data)
-
-    # Process the data
-    return {'message': curPrompt}
+    curResponce = SI.returnGBTResponce(2000)
+    return {'message': curResponce}
 
 
 @app.route("/about")
