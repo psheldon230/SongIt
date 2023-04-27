@@ -3,6 +3,7 @@ class SONG:
 
         self.artist = None
         self.songName = None
+        self.songArtistName = None
         self.bpm = None
         self.key = None
         self.predominantVoiceGender = None
@@ -33,6 +34,7 @@ class SONG:
     def processString(self, string):
         lines = string.split("\n")
         artistTitle = lines[0]
+        self.songArtistName = artistTitle
         self.artist = artistTitle.split(" - ")[0]
         self.songName = artistTitle.split(" - ")[-1]
         self.bpm = int(lines[1])
@@ -102,38 +104,52 @@ class SONG:
         return keys, items
 
         
-        
-sampleString = """Bring Me The Horizon - Can You Feel My Heart
-128
-E minor
-Male
-High
-RockMetal
-Rock: 0.64Metal: 0.49Electronic Dance: 0.04Show all
-Indie/AlternativeMetalcore
-Indie/Alternative: 0.63Psychedelic Progressive Rock: 0.35Metalcore: 0.35Show all
-EnergeticEpicUplifting
-Energetic: 0.91Epic: 0.8Uplifting: 0.58Show all
-ConfidentMotivationalResoluteShow all
-Confident: 0.59Motivational: 0.55Resolute: 0.54Show all
-PowerfulRetroHeroicShow all
-Powerful: 0.29Retro: 0.26Heroic: 0.19Show all
-DrivingRunning
-Driving: 0.72Running: 0.55Stomping: 0.32Show all
--0.05
-0.90
-High
-Balanced
-Low
-Low
-Bass GuitarElectric GuitarPercussionShow all
-Bass: ThroughoutBass Guitar: ThroughoutElectric Guitar: ThroughoutShow all
-4/4
-contemporary
--
--
-0WSa1sucoNRcEeULlZVQXj
-Listen on Spotify
-|
-Similarity
+
+
+"""The class SONG contains an __init__ method that initializes various attributes of the song object.
+string is a parameter passed to the constructor method, which is a string that contains information about the song.
+The processString() method is called in the __init__ method to parse the string and populate the attributes of the song object.
+Attributes:
+The various attributes of the song object are:
+
+artist: The name of the artist of the song.
+songName: The name of the song.
+songArtistName: The name of the song and artist together.
+bpm: The beats per minute of the song.
+key: The key of the song.
+predominantVoiceGender: The gender of the predominant voice in the song.
+voicePresenceProfile: The presence of the voice in the song.
+genreTags: The tags for the genre of the song.
+genreMean: The means for the genre tags.
+subgenreTags: The tags for the sub-genre of the song.
+subgenreMean: The means for the sub-genre tags.
+moodTags: The tags for the mood of the song.
+moodMean: The means for the mood tags.
+moodAdvancedTags: The advanced tags for the mood of the song.
+moodAdvancedMean: The means for the advanced mood tags.
+characterTags: The tags for the character of the song.
+characterMean: The means for the character tags.
+movementTags: The tags for the movement in the song.
+movementMean: The means for the movement tags.
+valenceMean: The mean for the valence of the song.
+arousalMean: The mean for the arousal of the song.
+energyLevel: The energy level of the song.
+emotionalProfile: The emotional profile of the song.
+energyDynamics: The energy dynamics of the song.
+instrumentTags: The tags for the instruments used in the song.
+instrumentPresence: The presence of the instruments in the song.
+meter: The meter of the song.
+musicalEra: The era of the song.
+Methods:
+The class contains the following methods:
+
+processString(): This method parses the string passed to the constructor and sets the attributes of the song object.
+splitCapitals(): This method is used to split the string based on capital letters.
+splitInstromentss(): This method is used to split the string based on instruments.
+splitMeans(): This method is used to split the string based on means.
+The code parses a sample string representing a song and sets the attributes of the song object accordingly. Finally, it creates an object of the SONG class using the sample string.
+
+
+
+
 """
