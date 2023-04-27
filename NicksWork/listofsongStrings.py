@@ -2732,16 +2732,20 @@ Listen on Spotify
 Similarity"""]
 
 songs = []
-songsDict = []
+songsDictList = []
+songsDictDict = {}
 for songString in songsStrings:
     curSong = SONG(songString)
+    songsDictDict[curSong.songArtistName] = curSong.__dict__
     songs.append(curSong)
-    songsDict.append(curSong.__dict__)
+    songsDictList.append(curSong.__dict__)
 
-jsonSongsDict = {"songs": songsDict}
+jsonSongsDict = {"songs": songsDictList}
 jsonSongsJson = json.dumps(jsonSongsDict)
 pkl.dump(songs, open('NicksWork/songsPickle.pkl', 'wb'))
-pkl.dump(songsDict, open('NicksWork/songsDictPickle.pkl', 'wb'))
+pkl.dump(songsDictList, open('NicksWork/songsDictListPickle.pkl', 'wb'))
+pkl.dump(songsDictDict, open('NicksWork/songsDictDictPickle.pkl', 'wb'))
+
 
 songNames = []
 bmps = []
