@@ -90,5 +90,6 @@ def processAlbumCoverData():
     return {'message': albumCovers, "songsDict": curSongDict}
 
 
+
 if __name__ == "__main__":
     app.run(debug=True)

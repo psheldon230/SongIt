@@ -79,6 +79,7 @@ $(document).ready(function () {
       .style("fill", "steelblue");
   }
   // setupGraph();
+
 });
 function formatTextForHTML(text) {
   // Replace newline characters with HTML line breaks
@@ -86,6 +87,7 @@ function formatTextForHTML(text) {
   // const formattedText = text
   var formattedText = text;
   return formattedText;
+
 
   // Replace consecutive whitespace characters with non-breaking spaces
   return formattedText.replace(/[\s]+/g, "&nbsp;");
@@ -115,6 +117,7 @@ function sendSelectedAlbumsToServer(data) {
   });
 }
 
+
 function sendDataToServer(data) {
   $.ajax({
     url: "/process-data",
@@ -125,11 +128,13 @@ function sendDataToServer(data) {
       console.log("Data sent successfully");
       console.log(response.message);
 
+
       $("#promptText").text(response.message);
     },
     error: function (jqXHR, textStatus, errorThrown) {
       console.log("Error sending data");
       $("#promptText").text("Error sending data");
+
       console.log(textStatus);
     },
   });
