@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/maryland.css') }}"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+    <style>
+      .promptText {
+        white-space: pre-wrap;
+      }
+    </style>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+          const sel = document.getElementById("selectSongs");
+          var songs = {{ songs | tojson
+        }};
+        console.log(songs);
+        for (let key in songs) {
+          const opt = document.createElement("option");
+          opt.value = songs[key].songArtistName;
+          opt.text = songs[key].songName + " by " + (songs[key].artist || "Unknown Artist");
+          sel.add(opt, null);
+        }
+        $('#selectSongs').chosen({
+
+          max_selected_options: 5,
+          multiple: true,
+        });
+      });
+    </script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/app.js') }}"
+    ></script>
+    <meta charset="utf-8" />
+    <title>About Flask</title>
+  </head>
+  o
+
+  <!-- <body>
+    <h1>About Flask</h1>
+    <p>Flask is a micro web framework written in Python.</p>
+    <p>
+      Applications that use the Flask framework include Pinterest, LinkedIn, and
+      the community web page for Flask itself.
+    </p>
+    <select id="selectSongs" multiple="multiple"></select>
+    <button type="button" id="returnDataPython">Click Me!</button>
+    <h3>Prompt Below</h3>
+    <pre id="promptText">Returned Prompt</pre>
+  </body> -->
+
+  <body class="body">
+    <div class="top-bar">
+      <img
+        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs3.amazonaws.com%2Ffreebiesupply%2Flarge%2F2x%2Fbaltimore-orioles-logo-transparent.png&f=1&nofb=1&ipt=b5e6e45ee672cf1c0a33d4b0cff32a407be240188f4e0ff107ab1f08c9ffb49b&ipo=images"
+        alt="Baltimore Orioles logo"
+      />
+      <img
+        src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg4.wikia.nocookie.net%2F__cb20111227212309%2Fmadden%2Fimages%2F0%2F09%2FBaltimore_Ravens_Logo.png&f=1&nofb=1&ipt=8c08197e7aeae14a9a9130dd287f8ecd65dfe0f9e77203977d684670eda353e9&ipo=images"
+        alt="Baltimore Ravens logo"
+      />
+      <img
+        src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2016%2F04%2FMiami_Heat_logo_2.png&f=1&nofb=1&ipt=a14a9d923ef48cefaf352a7c7bbef832dea6c4ed1fc07af95e4e40dccb39d1dd&ipo=images"
+        alt="Miami Heat logo"
+      />
+    </div>
+    <div class="containerBottom">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+    <div class="container">
+      <div class="inner-box">
+        <h1>Welcome to SongIt!</h1>
+        <p>
+          Are you ready to write the next hit song? Look no further than SongIt!
+          With our easy-to-use interface, you can pick up to 5 songs from our
+          dropdown menu and then generate lyrics, bpm, key, and other essential
+          information to help you bring your song to life and take it to the
+          stage.
+        </p>
+        <select id="selectSongs" multiple="multiple"></select>
+        <button type="button" id="returnDataPython">Click Me!</button>
+        <h3>Prompt Below</h3>
+        <pre id="promptText">Returned Prompt</pre>
+      </div>
+    </div>
+  </body>
+</html>

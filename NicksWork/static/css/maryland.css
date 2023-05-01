@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 200px;
+  padding: 0 20px;
+}
+
+.top-bar img {
+  height: 150px;
+}
+
+.top-bar img:first-child {
+  border-color: #df4601; /* Baltimore Orioles team color */
+  background-color: #df4601;
+}
+
+.top-bar img:nth-child(2) {
+  border-color: #241773; /* Baltimore Ravens team color */
+  background-color: #241773;
+}
+
+.top-bar img:last-child {
+  border-color: #98002e; /* Miami Heat team color */
+  background-color: #98002e;
+}
+.body {
+  background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flibertyflagandbanner.com%2Fwp-content%2Fuploads%2F2015%2F08%2Fmaryland-flag.jpg&f=1&nofb=1&ipt=6bb82f9083b2f364b323659db8e387b239d33f51b9bc936fec08f364e0295ebd&ipo=images");
+  background-size: 100% auto;
+  background-repeat: repeat;
+}
+
+.inner-box {
+  background-color: #ffc107;
+  color: #000000;
+  padding: 30px;
+  border: 2px solid #d62828;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+select,
+button {
+  background-color: #d62828;
+  color: #ffc107;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.containerBottom {
+  display: flex;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  background-color: gray;
+  margin-right: 20px;
+}
+
+pre {
+  font-size: 16px;
+  font-family: monospace;
+} /*# sourceMappingURL=style.css.map */
