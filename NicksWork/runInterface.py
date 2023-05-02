@@ -10,5 +10,10 @@ songs = pkl.load(open("NicksWork/songsPickle.pkl", 'rb'))
 curSongInterface = SONGSINTERFACE(songs)
 curSongInterface.printSongUI()
 curSongInterface.userChooseSongs()
-curSongInterface.printPrompt()
+gptPrompt = curSongInterface.printPrompt()
+
+with open('BlakeAndPete/gptPrompt.pkl', 'wb') as f:
+    pkl.dump(gptPrompt, f)
+
+
 nick = 5

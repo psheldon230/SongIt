@@ -62,7 +62,7 @@ class SONGSINTERFACE:
         result += "\n\n\n"
         result += "\nPlease write a song that takes influence from the following songs with these details about the songs. Give me the lyrics, cords, bpm, key and instroments that the song should be preformed with"
         for song in self.lastSelectedSongs:
-            result += "\n"+song.songName + " by" + song.artist + " with bpm " + str(song.bpm) + " with key " + song.key + " with predominant voice gender " + song.predominantVoiceGender + \
+            result += "\n"+song.songName + " by " + song.artist + " with bpm " + str(song.bpm) + " with key " + song.key + " with predominant voice gender " + song.predominantVoiceGender + \
                 " with genre " + song.genreTags[0] + " with energy level " + song.energyLevel + \
                 " with meter " + song.meter + \
                 " with mood " + song.moodAdvancedTags[0]
@@ -97,9 +97,14 @@ class SONGSINTERFACE:
         self.lastSelectedSongs = selectedSongs
 
     def printPrompt(self, selectedSongs=None):
-
-        print("\n\n\n")
-        print("Please write a song that takes influence from the following songs with these details about the songs. Give me the lyrics, cords, bpm, key and instroments that the song should be preformed with")
+        output = str()
+        output = ("\n\n\n")
+        output += ("Please write a song that takes influence from the following songs with these details about the songs. Give me the lyrics, cords, bpm, key and instroments that the song should be preformed with ")
         for song in self.lastSelectedSongs:
-            print(song.songName + " by" + song.artist + " with bpm " +
+            output += (song.songName + " by " + song.artist + " with bpm " +
                   str(song.bpm) + " with key " + song.key + " with predominant voice gender " + song.predominantVoiceGender + " with genre " + song.genreTags[0] + " with energy level " + song.energyLevel + " with meter " + song.meter + " with mood " + song.moodAdvancedTags[0])
+            # print(song.songName + " by" + song.artist + " with bpm " +
+            #       str(song.bpm) + " with key " + song.key + " with predominant voice gender " + song.predominantVoiceGender + " with genre " + song.genreTags[0] + " with energy level " + song.energyLevel + " with meter " + song.meter + " with mood " + song.moodAdvancedTags[0])
+        # print(output)
+        return output 
+
