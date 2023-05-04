@@ -7,6 +7,10 @@ musixmatch = Musixmatch("3dd66d658731d6c8be7a4d9b490b9f3f")
 # id = x['message']['body']['track_list'][0]['track']['track_id']
 
 def FindLyrics(Song, Artist):
+    status = musixmatch.matcher_lyrics_get(Song, Artist)['message']['header']['status_code']
+
+    if status != 200: return "Sorry, no lyrics available for this song"
+
     raw_lyrics = musixmatch.matcher_lyrics_get(Song, Artist)['message']['body']['lyrics']['lyrics_body']
 
     # Remove ellipsis
@@ -17,4 +21,5 @@ def FindLyrics(Song, Artist):
     
     return lyrics_without_disclaimer.strip()
 
-# print(FindLyrics("Hello", "Adele"))
+print(FindLyrics("i hate it here", "33kiro x Sukoyomi x p4rkr"))
+print(FindLyrics("Hello", "Adele"))
