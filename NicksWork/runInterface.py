@@ -11,6 +11,7 @@ curSongInterface = SONGSINTERFACE(songs)
 curSongInterface.printSongUI()
 curSongInterface.userChooseSongs()
 gptPrompt = curSongInterface.printPrompt()
+#print(gptPrompt)
 
 with open('BlakeAndPete/gptPrompt.pkl', 'wb') as f:
     pkl.dump(gptPrompt, f)
