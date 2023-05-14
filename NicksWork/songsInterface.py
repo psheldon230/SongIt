@@ -1,6 +1,7 @@
 import random
 import os
 import openai
+from lyrics import FindLyrics
 random.seed(1)
 
 
@@ -99,10 +100,10 @@ class SONGSINTERFACE:
     def printPrompt(self, selectedSongs=None):
         output = str()
         output = ("\n\n\n")
-        output += ("Please write a song that takes influence from the following songs with these details about the songs. Give me the lyrics, cords, bpm, key and instroments that the song should be preformed with ")
+        output += ("Please write a song that takes influence from the following songs with these details about the songs. Give me the lyrics, cords, bpm, key and instruments that the song should be performed with: ")
         for song in self.lastSelectedSongs:
-            output += (song.songName + " by " + song.artist + " with bpm " +
-                  str(song.bpm) + " with key " + song.key + " with predominant voice gender " + song.predominantVoiceGender + " with genre " + song.genreTags[0] + " with energy level " + song.energyLevel + " with meter " + song.meter + " with mood " + song.moodAdvancedTags[0])
+            output += ("\n\n " + song.songName + " by " + song.artist + " with bpm " +
+                  str(song.bpm) + " with key " + song.key + " with predominant voice gender " + song.predominantVoiceGender + " with genre " + song.genreTags[0] + " with energy level " + song.energyLevel + " with meter " + song.meter + " with mood " + song.moodAdvancedTags[0] + " and with lyrics: \n\n" + FindLyrics(song.songName, song.artist))
             # print(song.songName + " by" + song.artist + " with bpm " +
             #       str(song.bpm) + " with key " + song.key + " with predominant voice gender " + song.predominantVoiceGender + " with genre " + song.genreTags[0] + " with energy level " + song.energyLevel + " with meter " + song.meter + " with mood " + song.moodAdvancedTags[0])
         # print(output)
