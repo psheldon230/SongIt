@@ -6,21 +6,22 @@ section {
   padding: 2em 2em;
 }
 
-img{
+img {
   display: block;
   max-width: 100%;
 }
-strong { font-weight: 900;}
-.section__subtitle{
+strong {
+  font-weight: 900;
+}
+.section__subtitle {
   margin: 0;
-  font-size: 1.5rem
+  font-size: 1.5rem;
 }
 .section__subtitle--about {
   background: rgb(7, 92, 190);
   color: white;
-  padding: .25em 1em;
+  padding: 0.25em 1em;
 }
-
 
 /* Styling for the box containers */
 .containerBottom {
@@ -119,7 +120,7 @@ button {
   font-family: Arial, sans-serif;
 }
 
-.button:hover{
+.button:hover {
   transform: scale(1.1);
 }
 
@@ -149,6 +150,8 @@ h4 {
 
 /* Styles for the navigation list */
 .nav {
+  height: 80px;
+  margin-top: 0;
   display: flex;
   justify-content: right;
   background-color: rgb(18, 17, 95);
@@ -159,6 +162,7 @@ h4 {
   display: flex;
   padding: 0;
   margin: 10;
+  font-size: 20px;
 }
 
 .nav__item {
@@ -170,6 +174,7 @@ h4 {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  height: auto;
   padding: 10px;
   transition: color 0.3s ease;
 }
@@ -178,17 +183,17 @@ h4 {
   color: #ff0000;
 }
 
-.myshowcase{
+.myshowcase {
   background-color: transparent;
   /*background-image: url(songit2.jpg);*/
   color: white;
-  background-blend-mode: multiply; 
-  background-size: auto; 
+  background-blend-mode: multiply;
+  background-size: auto;
   text-align: center;
 }
 
 .section__title--showcase::after {
-  content: '';
+  content: "";
   margin-bottom: 10px;
   margin-top: 20px;
   display: block;
@@ -198,51 +203,51 @@ h4 {
   background: rgb(0, 119, 255);
   color: rgb(0, 119, 255);
   opacity: 0.25;
-
 }
-
 
 .showcase {
   max-width: 900px;
   color: white;
-  height:auto;
+  height: auto;
   display: flex;
   max-height: 600px;
-  margin:  auto;
+  margin: auto;
 }
 
 .showcase + .showcase {
-      margin-left: 20em;
-      margin-right: 20em;
-    }
+  margin-left: 20em;
+  margin-right: 20em;
+}
 
 .myshowcase h2,
 .myshowcase h3,
 .myshowcase p {
-      color: #fff;
-    }
-.myshowcase h2{
+  color: #fff;
+}
+.myshowcase h2 {
   font-size: xx-large;
 }
-.about-me p{
+.about-me p {
   color: white;
 }
-.myshowcase p{
+.myshowcase p {
   text-align: center;
-  margin-left:10px;
+  margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 20px;
 }
-
-
-html, body,head{
+.body {
+  margin: 0;
+}
+html,
+body,
+head {
   background-image: url(songit2.jpg);
   background-color: rgba(0, 0, 0, 0.7); /* opacity*/
   background-blend-mode: darken;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
 }
 .about-me {
   max-width: 1000px;
@@ -251,52 +256,51 @@ html, body,head{
   color: white;
 }
 
-
-@media(min-width: 600px) {
-  .about-me{
-      display: grid;
-      grid-template-columns: 1fr 200px;
-      grid-template-areas: 
+@media (min-width: 600px) {
+  .about-me {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    grid-template-areas:
       "title img"
-      'subtitle img'
-      'text img';
-      grid-column-gap: 2em ;
-      color: black;
+      "subtitle img"
+      "text img";
+    grid-column-gap: 2em;
+    color: black;
   }
-  .section__title--about{
-      grid-area: title;
-     }
+  .section__title--about {
+    grid-area: title;
+  }
 
-  .section__subtitle--about{
-      grid-column: 1/-1;
-      grid-row: 2;
-      position: relative;
-      left: -1em;
-      width: calc(90%);
-      padding-left: 1em;
-      padding-right:1em;
-      color: grey;;
+  .section__subtitle--about {
+    grid-column: 1/-1;
+    grid-row: 2;
+    position: relative;
+    left: -1em;
+    width: calc(90%);
+    padding-left: 1em;
+    padding-right: 1em;
+    color: grey;
+    background-color: white;
   }
-  .about-me__img{
-      background-image: url(Compsci.png);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: auto ;
-      grid-area: img;
-      position: center;
-      z-index: 2;
+  .about-me__img {
+    background-image: url(Compsci.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+    grid-area: img;
+    position: center;
+    z-index: 2;
   }
-  .about-me__body p{
+  .about-me__body p {
     font-size: large;
   }
 }
 
-.about-me h5{
+.about-me h5 {
   font-size: xx-large;
   color: white;
 }
 
-.about-me .section__subtitle--about
-{
+.about-me .section__subtitle--about {
   color: black;
 }

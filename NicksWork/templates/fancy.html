@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link
@@ -10,14 +12,20 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="{{ url_for('static', filename='css/fancy.css') }}"
+      href="{{ url_for('static', filename='css/fancy1.css') }}"
     />
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
     <style>
       .promptText {
         white-space: pre-wrap;
       }
     </style>
+    <style>
+      img {
+          max-width: 100%;
+      }
+      </style>
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
           const sel = document.getElementById("selectSongs");
@@ -44,45 +52,81 @@
     <meta charset="utf-8" />
     <title>SongIT</title>
   </head>
-  o
 
-  <!-- <body>
-    <h1>About Flask</h1>
-    <p>Flask is a micro web framework written in Python.</p>
-    <p>
-      Applications that use the Flask framework include Pinterest, LinkedIn, and
-      the community web page for Flask itself.
-    </p>
-    <select id="selectSongs" multiple="multiple"></select>
-    <button type="button" id="returnDataPython">Click Me!</button>
-    <h3>Prompt Below</h3>
-    <pre id="promptText">Returned Prompt</pre>
-  </body> -->
+  <body> 
+    <header>
+      <button class = "nav-toggle" aria-label="toggle navigation">
+        <span class="pretty"></span> 
+      </button>
+      <nav class = "nav">
+        <ul class="nav__list">
+            <li class = "nav__item"><a href="#home" class="nav__link">Home</a></li>
+            <li class = "nav__item"><a href="#showcase" class="nav__link">Showcase Songs</a></li>
+            <li class = "nav__item"><a href="#about" class="nav__link">Contact Us</a></li>
+            <li class = "nav__item"><a href="#more" class="nav__link">More (coming soon...)</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <body class="body">
-    <div class="containerBottom">
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-    </div>
+    <section class="myshowcase" id = "showcase">
+      <h2 class="section__title section__title--showcase">Welcome to SongIT!</h2>
+      <div class ="showcase">
+          <div class ="show1">
+              <h3>Step 1</h3>
+              <p>Choose 2 - 5 inspiration songs</p>
+          </div>
+
+          <div class ="show2">
+              <h3>Step 2</h3>
+              <p> Provide 2 - 3 words you want to be in the song </p>
+          </div>
+
+          <div class ="show3">
+              <h3>Step 3</h3>
+              <p> Get your personalized song and enjoy</p>
+          </div>
+      </div>
+      <!-- <button type = "button">Start Creating</a> -->
+  </section>
+
+    <body class="body">
+      <div class="containerBottom">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+    <!-- This div containerBottom needs to stay the same with the same class and the boxes need to be 300 by 300 -->
     <div class="container">
       <div class="inner-box">
-        <h1>Welcome to SongIt!</h1>
+        <!-- <h1>Welcome to SongIt!</h1> -->
         <p>
-          Are you ready to write the next hit song? Look no further than SongIt!
-          With our easy-to-use interface, you can pick up to 5 songs from our
-          dropdown menu and then generate lyrics, bpm, key, and other essential
-          information to help you bring your song to life and take it to the
-          stage.
+          Are you ready to write the next hit song? Pick up to 5 songs from our
+          dropdown and bring your song to life.
         </p>
-        <select id="selectSongs" multiple="multiple"></select>
+        <select id="selectSongs" multiple="multiple"></select> 
+        <!-- This select songs Id is necessary and needs to keep the same id and multible -->
         <button type="button" id="returnDataPython">Click Me!</button>
-        <h3>Prompt Below</h3>
+        <!-- This button Id is necessary and needs to keep the same id -->
+        <h4>Prompt Below</h4>
         <pre id="promptText">Returned Prompt</pre>
+        <!-- This promptText needs to be the same and be in a <pre><\pre> -->
       </div>
     </div>
-    <!-- <svg width="500" height="500" style="background-color: white"></svg> -->
+    <section class="about-me" id="about">
+      <h5 class="section__title section__title--about">About Songit</h5>
+      <p class = "section__subtitle section__subtitle--about">Practicum in Intelligent Information Systems Project</p>
+
+      <div class="about-me__body">
+          <p>Team Profile: <a href="Team Profile.pdf">Team Profile</a></p>
+          <p>Hear from our users! <br> <a href="User Stories.pdf">User Stories</a></p>
+          <p>Contact Info <br> Phone number: 22439925182 <br> E-mail: SongIt@u.northwestern.edu <br>
+          <!-- Link to my bio: <a href='bio.html'> Hannah Marques Bio</a> -->
+      </p>
+      </div>
+
+      <img src="" class="about-me__img">
+  </section>
   </body>
 </html>
