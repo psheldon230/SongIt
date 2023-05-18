@@ -35,6 +35,7 @@ $(document).ready(function () {
       updatedInstructions: updatedInstructions,
       previousSong: previousSong,
     };
+    $("#promptText").text("Loading Please Wait");
     sendDataToServerUpdateSong(data)
   });
 

@@ -2,7 +2,7 @@ import os
 import openai
 import pickle
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 while True:
     print("Welcome to SongIt\n")
