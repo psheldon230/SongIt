@@ -23,6 +23,14 @@ strong {
   padding: 0.25em 1em;
 }
 
+textarea {
+  margin-top: 20px;
+  width: 300px;
+  height: 100px;
+  padding: 5px;
+  resize: vertical; /* Allows vertical resizing */
+}
+
 /* Styling for the box containers */
 .containerBottom {
   display: flex;

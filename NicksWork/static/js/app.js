@@ -9,8 +9,33 @@ $(document).ready(function () {
       }
     }
     console.log(selectedValues);
-    var responce = sendDataToServer(selectedValues);
+    var textarea = document.querySelector('textarea[name="textbox"]');
+    var text = textarea.value;
+    console.log(text);
+    // Prepare the data to be sent to the server
+    var data = {
+      selectedValues: selectedValues,
+      text: text,
+    };
+
+    // Send the data to the server
+    var response = sendDataToServer(data);
     $("#promptText").text("Loading Please Wait");
+  });
+
+  $("#updateSongButton").click(function () {
+    // Get the updated instructions from the textarea
+    const updatedInstructions = document.getElementById("updateSong").value;
+
+    // Get the previous song from the pre element
+    const previousSong = document.getElementById("promptText").textContent;
+
+    // Combine the variables into a single object
+    const data = {
+      updatedInstructions: updatedInstructions,
+      previousSong: previousSong,
+    };
+    sendDataToServerUpdateSong(data)
   });
 
   $("#selectSongs").change(function () {
@@ -24,62 +49,6 @@ $(document).ready(function () {
     }
     sendSelectedAlbumsToServer(selectedValues);
   });
-
-  function setupGraph() {
-    const data = [
-      { x: 10, y: 20 },
-      { x: 20, y: 40 },
-      { x: 30, y: 60 },
-      { x: 40, y: 80 },
-      { x: 50, y: 100 },
-    ];
-
-    const margin = { top: 20, right: 20, bottom: 50, left: 50 };
-    const width = 500 - margin.left - margin.right;
-    const height = 500 - margin.top - margin.bottom;
-
-    const svg = d3
-      .select("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom);
-
-    const xScale = d3
-      .scaleLinear()
-      .domain([0, d3.max(data, (d) => d.x)])
-      .range([margin.left, width - margin.right]);
-
-    const yScale = d3
-      .scaleLinear()
-      .domain([0, d3.max(data, (d) => d.y)])
-      .range([height - margin.bottom, margin.top]);
-
-    const xAxis = d3.axisBottom(xScale);
-
-    const yAxis = d3.axisLeft(yScale);
-
-    svg
-      .append("g")
-      .attr("transform", `translate(0, ${height - margin.bottom})`)
-      .call(xAxis);
-
-    svg
-      .append("g")
-      .attr("transform", `translate(${margin.left}, 0)`)
-      .call(yAxis);
-
-    svg
-      .selectAll(".dot")
-      .data(data)
-      .enter()
-      .append("circle")
-      .attr("class", "dot")
-      .attr("cx", (d) => xScale(d.x))
-      .attr("cy", (d) => yScale(d.y))
-      .attr("r", 5)
-      .style("fill", "steelblue");
-  }
-  // setupGraph();
-
 });
 function formatTextForHTML(text) {
   // Replace newline characters with HTML line breaks
@@ -87,7 +56,6 @@ function formatTextForHTML(text) {
   // const formattedText = text
   var formattedText = text;
   return formattedText;
-
 
   // Replace consecutive whitespace characters with non-breaking spaces
   return formattedText.replace(/[\s]+/g, "&nbsp;");
@@ -117,7 +85,6 @@ function sendSelectedAlbumsToServer(data) {
   });
 }
 
-
 function sendDataToServer(data) {
   $.ajax({
     url: "/process-data",
@@ -128,6 +95,25 @@ function sendDataToServer(data) {
       console.log("Data sent successfully");
       console.log(response.message);
 
+      $("#promptText").text(response.message);
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.log("Error sending data");
+      $("#promptText").text("Error sending data");
+
+      console.log(textStatus);
+    },
+  });
+}
+function sendDataToServerUpdateSong(data) {
+  $.ajax({
+    url: "/process-data-update-song",
+    method: "POST",
+    data: JSON.stringify(data),
+    contentType: "application/json",
+    success: function (response) {
+      console.log("Data sent successfully");
+      console.log(response.message);
 
       $("#promptText").text(response.message);
     },
