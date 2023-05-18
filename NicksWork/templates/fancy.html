@@ -106,9 +106,21 @@
           dropdown and bring your song to life.
         </p>
         <select id="selectSongs" multiple="multiple"></select> 
+        <form>
+          <textarea name="textbox" placeholder="Enter in additional instructions here"></textarea>
+
+        </form>
         <!-- This select songs Id is necessary and needs to keep the same id and multible -->
-        <button type="button" id="returnDataPython">Click Me!</button>
+        <button type="button" id="returnDataPython">Write a new Song!</button>
         <!-- This button Id is necessary and needs to keep the same id -->
+
+        <form>
+          <textarea name="textbox" id="updateSong" placeholder="Update the Premade song off of prompt"></textarea>
+        </form>
+        <button type="button" id="updateSongButton">Update Song!</button>
+
+
+        
         <h4>Prompt Below</h4>
         <pre id="promptText">Returned Prompt</pre>
         <!-- This promptText needs to be the same and be in a <pre><\pre> -->

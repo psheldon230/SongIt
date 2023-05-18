@@ -13,19 +13,14 @@ class SONGSINTERFACE:
         self.lastSelectedSongs = None
         self.allSongsDict = None
         self.lastPrompt = None
+        self.lastSong = None
         if not initualSongs is None:
             self.setupSongs(initualSongs, self.numSongs)
         return
-
-    def returnGBTResponce(self, maxTokens=50):
+    
+    def updateChatGBT(self, previousSong, updatedInstructions):
+        new_prompt = "Here is your previous output: " + previousSong + "Return the same output, but with the following changes: " + updatedInstructions
         openai.api_key = "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"
-        # completion = openai.Completion.create(
-        #     engine="text-davinci-002",
-        #     prompt=self.lastPrompt,
-        #     max_tokens=maxTokens,)
-        # print(maxTokens)
-        # return completion.choices[0].text
-
         completion = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
@@ -33,6 +28,20 @@ class SONGSINTERFACE:
             ]
         )
         return completion.choices[0].message.content
+
+
+    def returnGBTResponce(self, maxTokens=50):
+        openai.api_key = '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'
+    
+        completion = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": self.lastPrompt}
+            ]
+        )
+        self.lastsong = completion.choices[0].message.content
+
+        return self.lastsong
 
     def setupSongs(self, allSongs, numSongs=10):
         self.addAllSongs(allSongs)
@@ -53,15 +62,18 @@ class SONGSINTERFACE:
             curSongs.append(self.allSongsDict[curSong])
         self.lastSelectedSongs = curSongs
 
-    def returnPromptWithList(self, songList):
+    def returnPromptWithList(self, songList, songAdditionalRequest= None):
         print("songlist", songList)
         self.selectLastSelectedSongsFromList(songList)
-        return self.returnPrompt()
+        return self.returnPrompt(additionalRequest=songAdditionalRequest)
 
-    def returnPrompt(self):
+    def returnPrompt(self, additionalRequest = None):
         result = ""
         result += "\n\n\n"
         result += "\nPlease write a song that takes influence from the following songs with these details about the songs. Give me the lyrics, cords, bpm, key and instroments that the song should be preformed with"
+        if not additionalRequest is None:
+            result += '\n Write a song so that it abides by these instructions as well \n'
+            result += additionalRequest
         for song in self.lastSelectedSongs:
             result += "\n"+song.songName + " by " + song.artist + " with bpm " + str(song.bpm) + " with key " + song.key + " with predominant voice gender " + song.predominantVoiceGender + \
                 " with genre " + song.genreTags[0] + " with energy level " + song.energyLevel + \

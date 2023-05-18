@@ -18,6 +18,9 @@ def home():
 @app.route('/process-data', methods=['POST'])
 def process_data():
     data = request.get_json()
+    print(data)
+    specializedText = data['text']
+    songList = data['selectedValues']
     songs_file = "NicksWork/songsPickle.pkl"
     si_file = "NicksWork/SIPickle.pkl"
 
@@ -35,10 +38,40 @@ def process_data():
         # Save SI to new pickle file
         with open(si_file, 'wb') as f:
             pkl.dump(SI, f)
-    curPrompt = SI.returnPromptWithList(songList=data)
-    # curResponce = SI.returnGBTResponce(2000)
-    return {'message': curPrompt}
-    # return {'message': curResponce}
+    curPrompt = SI.returnPromptWithList(songList=songList, songAdditionalRequest= specializedText)
+    curResponce = SI.returnGBTResponce(2000)
+    # return {'message': curPrompt}
+    return {'message': curResponce}
+
+
+@app.route('/process-data-update-song', methods=['POST'])
+def process_data_update_song():
+    data = request.get_json()
+    updatedInstructions = data['updatedInstructions']
+    previousSong = data['previousSong']
+    print(data)
+    si_file = "NicksWork/SIPickle.pkl"
+    songs_file = "NicksWork/songsPickle.pkl"
+    # Check if pickle file for SI exists
+    if os.path.isfile(si_file):
+        # Load SI from the pickle file
+        SI = pkl.load(open(si_file, 'rb'))
+    else:
+        # Load songs from the pickle file
+        songs = pkl.load(open(songs_file, 'rb'))
+
+        # Create new instance of SONGSINTERFACE class
+        SI = SONGSINTERFACE(songs)
+
+        # Save SI to new pickle file
+        with open(si_file, 'wb') as f:
+            pkl.dump(SI, f)
+    newSong = SI.updateChatGBT(updatedInstructions=updatedInstructions,previousSong=previousSong)
+
+        
+
+    
+    return {'message': newSong}
 
 
 @app.route("/about")
