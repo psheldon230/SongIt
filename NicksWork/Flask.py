@@ -88,9 +88,9 @@ def processAlbumCoverData():
     print(songList)
     albumCovers = []
 
-    baseAlbumCover = SPI.searchAlbumCover300("Changes Shrek 2")
+    baseAlbumCover = SPI.searchAlbumCover300("Goodbye and Good Riddance - Juice WRLD")
     for i in range(5):
-        albumCovers.append(baseAlbumCover)
+        albumCovers.append("")
 
     for i, searchStr in enumerate(songList):
         albumCovers[i] = SPI.searchAlbumCover300(searchStr)

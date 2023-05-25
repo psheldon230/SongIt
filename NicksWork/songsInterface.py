@@ -20,7 +20,7 @@ class SONGSINTERFACE:
     
     def updateChatGBT(self, previousSong, updatedInstructions):
         new_prompt = "Here is your previous output: " + previousSong + "Return the same output, but with the following changes: " + updatedInstructions
-        openai.api_key = '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'
+        openai.api_key = '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'
         completion = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
@@ -31,7 +31,7 @@ class SONGSINTERFACE:
 
 
     def returnGBTResponce(self, maxTokens=50):
-        openai.api_key = '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'
+        openai.api_key = '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'
     
         completion = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
