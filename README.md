@@ -1,7 +1,7 @@
 # SongIt
 
 ## About
-SongIt is artifical intelligence based music development tool, that users can interact with to create new music. By selecting a number of existing songs, the system outputs a brand new song complete with lyrics, chords, beats per minute, style, and recomended instruments that is generated based on the users preference of music.
+SongIt is an artificial-intelligence based music development tool that users can interact with to create new music. By selecting a number of existing songs, the system outputs a brand new song complete with lyrics, chords, beats per minute, style, and recommended instruments that is generated based on the user’s preference of music.
 
 ## How To Use:
 Simply select any of the songs available in the system for SongIt to cleverly generate a new song inspired by your selection!
